@@ -43,6 +43,20 @@ jobs:
         working-directory: project
         run: npx cap sync android
 
+      - name: Generate debug keystore
+        working-directory: project
+        run: |
+          mkdir -p build-tools
+          keytool -genkeypair -v \
+            -keystore build-tools/debug.keystore \
+            -storepass android \
+            -alias androiddebugkey \
+            -keypass android \
+            -dname "CN=Android Debug,O=Android,C=US" \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000
+            
       - name: Build APK
         working-directory: project/android
         run: |
