@@ -31,9 +31,9 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Install dependencies
+            - name: Install dependencies
         working-directory: project
-        run: npm ci
+        run: npm install
 
       - name: Build web
         working-directory: project
